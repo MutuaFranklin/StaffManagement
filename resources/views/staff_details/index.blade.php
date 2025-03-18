@@ -23,6 +23,7 @@
             <th>Current Location</th>
             <th>Highest Level of Education</th>
             <th>Duty Station</th>
+            <th>Actions</th>
             
             @foreach($staff_details as $staff_detail)
             <tr>
@@ -33,6 +34,14 @@
                 <td>{{ $staff_detail->current_location }}</td>
                 <td>{{ $staff_detail->highest_level_of_education }}</td>
                 <td>{{ $staff_detail->duty_station }}</td>
+                <td>
+                    <a href="{{ route('staff_details.show', $staff_detail->id) }}" class="btn btn-primary">View</a>
+                    <a href="{{ route('staff_details.edit', $staff_detail->id) }}" class="btn btn-warning">Edit</a>
+                    <form action="{{ route('staff_details.destroy', $staff_detail->id) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
             </tr>
             @endforeach
 
