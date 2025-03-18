@@ -17,3 +17,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/employee_details', 'StaffDetailsController@index')->name('staff_details.index');
+
+
+Route::get('/employee_details/create', 'StaffDetailsController@create')->name('estaff_details.create');
+
+    
